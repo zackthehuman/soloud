@@ -4,13 +4,10 @@ project (SoLoud)
 
 set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
-#INCLUDE (StandartIncludes)
 
-include_directories (../include)
+include_directories (include)
 
-include (Configure.cmake)
-#INCLUDE (InstallIncludes.cmake)
-#INCLUDE (InstallStaticData.cmake)
+include (cmake/Configure.cmake)
 
 if (UNIX AND NOT WIN32 AND NOT APPLE)
 	if (CMAKE_SIZEOF_VOID_P MATCHES "8")
@@ -25,15 +22,15 @@ if (NOT DEFINED LIB_POSTFIX)
 	set (LIB_POSTFIX "")
 endif ()
 
-include (src.cmake)
+include (cmake/src.cmake)
 
 # Demos
 IF (SOLOUD_BUILD_DEMOS)
-	include (demos.cmake)
+	include (cmake/demos.cmake)
 endif ()
 
 IF (SOLOUD_GENERATE_GLUE)
-	include (gen_glue.cmake)
+	include (cmake/gen_glue.cmake)
 endif ()
 
-include (InstallExport)
+include (cmake/InstallExport.cmake)
