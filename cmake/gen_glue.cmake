@@ -6,7 +6,7 @@ find_package (Python3 COMPONENTS Interpreter REQUIRED)
 add_executable (codegen ../src/tools/codegen/main.cpp)
 
 # Add a command to run the executable to generate the python file
-add_custom_command (OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/soloud_codegen.py"
+add_custom_command (OUTPUT "${PROJECT_SOURCE_DIR}/scripts/soloud_codegen.py"
         COMMAND codegen ARGS go
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -16,32 +16,32 @@ add_custom_command (OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/soloud_codege
 ###############################################################################
 # C# API
 ###############################################################################
-add_custom_command (OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.cs"
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_cs.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/soloud_codegen.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_cs.py"
+add_custom_command (OUTPUT "${PROJECT_SOURCE_DIR}/glue/soloud.cs"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/scripts/gen_cs.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/soloud_codegen.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/gen_cs.py"
         )
-add_custom_target (generate_glue_cs ALL DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.cs")
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.cs" DESTINATION glue)
+add_custom_target (generate_glue_cs ALL DEPENDS "${PROJECT_SOURCE_DIR}/glue/soloud.cs")
+install(FILES "${PROJECT_SOURCE_DIR}/glue/soloud.cs" DESTINATION glue)
 
 ###############################################################################
 # Python API
 ###############################################################################
-add_custom_command (OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.rb"
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_ruby.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/soloud_codegen.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_ruby.py"
+add_custom_command (OUTPUT "${PROJECT_SOURCE_DIR}/glue/soloud.rb"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/scripts/gen_ruby.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/soloud_codegen.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/gen_ruby.py"
         )
-add_custom_target (generate_glue_ruby ALL DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.rb")
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.rb" DESTINATION glue)
+add_custom_target (generate_glue_ruby ALL DEPENDS "${PROJECT_SOURCE_DIR}/glue/soloud.rb")
+install(FILES "${PROJECT_SOURCE_DIR}/glue/soloud.rb" DESTINATION glue)
 
 ###############################################################################
 # Ruby API
 ###############################################################################
-add_custom_command (OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.py"
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_python.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/soloud_codegen.py"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/gen_python.py"
+add_custom_command (OUTPUT "${PROJECT_SOURCE_DIR}/glue/soloud.py"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/scripts/gen_python.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/soloud_codegen.py"
+        DEPENDS "${PROJECT_SOURCE_DIR}/scripts/gen_python.py"
         )
-add_custom_target(generate_glue_python ALL DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.py")
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../glue/soloud.py" DESTINATION glue)
+add_custom_target(generate_glue_python ALL DEPENDS "${PROJECT_SOURCE_DIR}/glue/soloud.py")
+install(FILES "${PROJECT_SOURCE_DIR}/glue/soloud.py" DESTINATION glue)

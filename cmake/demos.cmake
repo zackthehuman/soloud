@@ -1,5 +1,5 @@
-set (SOLOUD_DEMOS_HEADER_PATH ../include)
-set (SOLOUD_DEMOS_SOURCE_PATH ../demos)
+set (SOLOUD_DEMOS_HEADER_PATH ${PROJECT_SOURCE_DIR}/include)
+set (SOLOUD_DEMOS_SOURCE_PATH ${PROJECT_SOURCE_DIR}/demos)
 
 function (soloud_add_demo name sources)
 	set (TARGET_NAME SoLoud_${name})
