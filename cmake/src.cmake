@@ -1,52 +1,52 @@
 set (TARGET_NAME soloud)
 
-set (SOLOUD_HEADER_PATH ${PROJECT_SOURCE_DIR}/include)
-set (SOLOUD_SOURCE_PATH ${PROJECT_SOURCE_DIR}/src)
+set (INCROOT ${PROJECT_SOURCE_DIR}/include)
+set (SRCROOT ${PROJECT_SOURCE_DIR}/src)
 
 set (SOLOUD_LINK_LIBRARIES)
 
 # Headers
 set (SOLOUD_TARGET_HEADERS
-	${SOLOUD_HEADER_PATH}/soloud.h
-	${SOLOUD_HEADER_PATH}/soloud_audiosource.h
-	${SOLOUD_HEADER_PATH}/soloud_ay.h
-	${SOLOUD_HEADER_PATH}/soloud_bassboostfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_biquadresonantfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_bus.h
-	${SOLOUD_HEADER_PATH}/soloud_dcremovalfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_echofilter.h
-	${SOLOUD_HEADER_PATH}/soloud_error.h
-	${SOLOUD_HEADER_PATH}/soloud_fader.h
-	${SOLOUD_HEADER_PATH}/soloud_fft.h
-	${SOLOUD_HEADER_PATH}/soloud_fftfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_file.h
-	${SOLOUD_HEADER_PATH}/soloud_file_hack_off.h
-	${SOLOUD_HEADER_PATH}/soloud_file_hack_on.h
-	${SOLOUD_HEADER_PATH}/soloud_filter.h
-	${SOLOUD_HEADER_PATH}/soloud_flangerfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_freeverbfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_internal.h
-	${SOLOUD_HEADER_PATH}/soloud_lofifilter.h
-	${SOLOUD_HEADER_PATH}/soloud_misc.h
-	${SOLOUD_HEADER_PATH}/soloud_monotone.h
-	${SOLOUD_HEADER_PATH}/soloud_noise.h
-	${SOLOUD_HEADER_PATH}/soloud_openmpt.h
-	${SOLOUD_HEADER_PATH}/soloud_queue.h
-	${SOLOUD_HEADER_PATH}/soloud_robotizefilter.h
-	${SOLOUD_HEADER_PATH}/soloud_sfxr.h
-	${SOLOUD_HEADER_PATH}/soloud_speech.h
-	${SOLOUD_HEADER_PATH}/soloud_tedsid.h
-	${SOLOUD_HEADER_PATH}/soloud_thread.h
-	${SOLOUD_HEADER_PATH}/soloud_vic.h
-	${SOLOUD_HEADER_PATH}/soloud_vizsn.h
-	${SOLOUD_HEADER_PATH}/soloud_wav.h
-	${SOLOUD_HEADER_PATH}/soloud_waveshaperfilter.h
-	${SOLOUD_HEADER_PATH}/soloud_wavstream.h
+	${INCROOT}/soloud.h
+	${INCROOT}/soloud_audiosource.h
+	${INCROOT}/soloud_ay.h
+	${INCROOT}/soloud_bassboostfilter.h
+	${INCROOT}/soloud_biquadresonantfilter.h
+	${INCROOT}/soloud_bus.h
+	${INCROOT}/soloud_dcremovalfilter.h
+	${INCROOT}/soloud_echofilter.h
+	${INCROOT}/soloud_error.h
+	${INCROOT}/soloud_fader.h
+	${INCROOT}/soloud_fft.h
+	${INCROOT}/soloud_fftfilter.h
+	${INCROOT}/soloud_file.h
+	${INCROOT}/soloud_file_hack_off.h
+	${INCROOT}/soloud_file_hack_on.h
+	${INCROOT}/soloud_filter.h
+	${INCROOT}/soloud_flangerfilter.h
+	${INCROOT}/soloud_freeverbfilter.h
+	${INCROOT}/soloud_internal.h
+	${INCROOT}/soloud_lofifilter.h
+	${INCROOT}/soloud_misc.h
+	${INCROOT}/soloud_monotone.h
+	${INCROOT}/soloud_noise.h
+	${INCROOT}/soloud_openmpt.h
+	${INCROOT}/soloud_queue.h
+	${INCROOT}/soloud_robotizefilter.h
+	${INCROOT}/soloud_sfxr.h
+	${INCROOT}/soloud_speech.h
+	${INCROOT}/soloud_tedsid.h
+	${INCROOT}/soloud_thread.h
+	${INCROOT}/soloud_vic.h
+	${INCROOT}/soloud_vizsn.h
+	${INCROOT}/soloud_wav.h
+	${INCROOT}/soloud_waveshaperfilter.h
+	${INCROOT}/soloud_wavstream.h
 )
 
 
 # Core
-set (SOLOUD_CORE_PATH ${SOLOUD_SOURCE_PATH}/core)
+set (SOLOUD_CORE_PATH ${SRCROOT}/core)
 set (SOLOUD_CORE_SOURCES
 	${SOLOUD_CORE_PATH}/soloud.cpp
 	${SOLOUD_CORE_PATH}/soloud_audiosource.cpp
@@ -71,7 +71,7 @@ set (SOLOUD_CORE_SOURCES
 
 
 # Audiosources
-set (SOLOUD_AUDIOSOURCES_PATH ${SOLOUD_SOURCE_PATH}/audiosource)
+set (SOLOUD_AUDIOSOURCES_PATH ${SRCROOT}/audiosource)
 set (SOLOUD_AUDIOSOURCES_SOURCES
 	# ay
 	${SOLOUD_AUDIOSOURCES_PATH}/ay/chipplayer.cpp
@@ -137,7 +137,7 @@ set (SOLOUD_AUDIOSOURCES_SOURCES
 
 # Backends
 # TODO: Other backends
-set (SOLOUD_BACKENDS_PATH ${SOLOUD_SOURCE_PATH}/backend)
+set (SOLOUD_BACKENDS_PATH ${SRCROOT}/backend)
 set (SOLOUD_BACKENDS_SOURCES)
 
 if (SOLOUD_BACKEND_NULL)
@@ -245,7 +245,7 @@ if (SOLOUD_BACKEND_WASAPI)
 endif()
 
 # Filters
-set (SOLOUD_FILTERS_PATH ${SOLOUD_SOURCE_PATH}/filter)
+set (SOLOUD_FILTERS_PATH ${SRCROOT}/filter)
 set (SOLOUD_FILTERS_SOURCES
 	${SOLOUD_FILTERS_PATH}/soloud_bassboostfilter.cpp
 	${SOLOUD_FILTERS_PATH}/soloud_biquadresonantfilter.cpp
@@ -277,12 +277,12 @@ set (SOLOUD_TARGET_SOURCES
 if (SOLOUD_C_API)
 	set (SOLOUD_TARGET_SOURCES
 		${SOLOUD_TARGET_SOURCES}
-		${SOLOUD_SOURCE_PATH}/c_api/soloud.def
-		${SOLOUD_SOURCE_PATH}/c_api/soloud_c.cpp
+		${SRCROOT}/c_api/soloud.def
+		${SRCROOT}/c_api/soloud_c.cpp
 	)
 	set (SOLOUD_TARGET_HEADERS
 		${SOLOUD_TARGET_HEADERS}
-		${SOLOUD_HEADER_PATH}/soloud_c.h
+		${INCROOT}/soloud_c.h
 	)
 endif()
 

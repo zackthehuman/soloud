@@ -20,3 +20,7 @@ INSTALL (
 	LIBRARY DESTINATION ${SOLOUD_INSTALL_LIBDIR}
 	ARCHIVE DESTINATION ${SOLOUD_INSTALL_ARCHIVEDIR}
 )
+
+target_include_directories(${TARGET_NAME}
+                               PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+                               PRIVATE ${PROJECT_SOURCE_DIR}/src)

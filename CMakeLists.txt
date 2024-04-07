@@ -1,11 +1,16 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.22)
 
 project (SoLoud)
 
 set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-include_directories (include)
+# we use the paths from the cmake GNUInstallDirs module as defaults
+# you can override these if you like
+# https://cmake.org/cmake/help/latest/module/GNUInstallDirs.html
+include(GNUInstallDirs)
+
+# include_directories (include)
 
 include (cmake/Configure.cmake)
 
