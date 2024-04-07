@@ -1,5 +1,5 @@
 # Required Vars:
-# ${SOLOUD_TARGET_NAME}
+# ${TARGET_NAME}
 
 SET (SOLOUD_INSTALL_BINDIR bin)
 IF(WIN32)
